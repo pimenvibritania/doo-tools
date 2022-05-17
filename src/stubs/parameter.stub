@@ -1,0 +1,29 @@
+<?php
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Yiisoft\RequestModel\RequestModel;
+use Yiisoft\RequestModel\ValidatableModelInterface;
+
+/**
+ * Class Parameter
+ * @package {{ namespace }}
+ * @author pimenvibritania <pimen@doogether.id>
+ */
+class Parameter extends RequestModel implements ValidatableModelInterface
+{
+    /**
+     * Parameter constructor.
+     */
+    public function __construct()
+    {}
+
+    /**
+     * @return array[]
+     */
+    public function getRules(): array
+    {
+        return [];
+    }
+}

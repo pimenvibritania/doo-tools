@@ -1,0 +1,26 @@
+<?php
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Yiisoft\DataResponse\DataResponse;
+use Yiisoft\DataResponse\DataResponseFactoryInterface;
+
+/**
+ * Class Action
+ * @package {{ namespace }}
+ * @author pimenvibritania <pimen@doogether.id>
+ */
+class Action
+{
+    /**
+     * @param DataResponseFactoryInterface $dataResponseFactory
+     * @return DataResponse
+     */
+    public function run(
+        DataResponseFactoryInterface $dataResponseFactory,
+    )
+    {
+        return $dataResponseFactory->createResponse();
+    }
+}

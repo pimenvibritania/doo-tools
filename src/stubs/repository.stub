@@ -1,0 +1,24 @@
+<?php
+declare(strict_types=1);
+
+namespace {{ namespace }};
+
+use Yiisoft\ActiveRecord\ActiveRecordFactory;
+
+/**
+ * Class Repository
+ * @package {{ namespace }}
+ * @author pimenvibritania <pimen@doogether.id>
+ */
+class Repository
+{
+    /**
+     * Repository constructor.
+     * @param ActiveRecordFactory $activeRecordFactory
+     */
+    public function __construct(private ActiveRecordFactory $activeRecordFactory)
+    {}
+
+    public function query()
+    {}
+}

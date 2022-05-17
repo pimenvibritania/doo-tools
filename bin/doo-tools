@@ -1,6 +1,10 @@
 #!/usr/bin/php
 <?php
 
+/**
+ * @author pimenvibritania <pimen@doogether.id>
+ */
+
 if (php_sapi_name() !== 'cli') {
     exit;
 }
@@ -16,49 +20,52 @@ require $root_app . '/vendor/autoload.php';
 use Minicli\App;
 use Minicli\Command\CommandCall;
 use Dootools\Generator;
+use App\ApplicationRunner;
 
-$app = new App();
-$app->setSignature('./bin/doo-tools advice');
+$app = new App([
+    'theme' => '\Unicorn'
+]);
+
+$app->setSignature('php doo help');
 
 $doo = new Generator();
 
+$reflector = new ReflectionClass(ApplicationRunner::class);
+
 $input = new CommandCall($argv);
 
-$app->registerCommand('help', function() use ($app) {
-    $app->getPrinter()->info("./bin/doo-tools advice");
+$app->registerCommand(/**
+ * @return void
+ */ 'help', function() use ($app) {
+    help($app);
 });
 
-$app->registerCommand('make:endpoint', function() use ($app, $doo) {
-    $doo->copy(__DIR__ . "/src/Endpoint");
-});
-
-$app->registerCommand('advice', function() use ($app, $input) {
-    $query_url = "https://api.adviceslip.com/advice";
-
-    if ($input->hasParam('search')) {
-        $query_url = "https://api.adviceslip.com/advice/search/" . $input->getParam('search');
-    }
-
-    $result = file_get_contents($query_url);
-
-    if ($result) {
-        $content = json_decode($result, true);
-
-        if (isset($content['total_results'])) {
-            $search_results = $content['slips'];
-            $advice = $search_results[array_rand($search_results)]['advice'];
-        } else {
-            if (isset($content['slip'])) {
-                $advice = $content['slip']['advice'];
-            }
-        }
-
-        $app->getPrinter()->newline();
-        $app->getPrinter()->info($advice ?? "No results found.");
-        $app->getPrinter()->newline();
-    }
-
-    return 0;
+$app->registerCommand(/**
+ * @return void
+ */ 'make:endpoint', function() use ($reflector, $doo, $app, $input) {
+    $dirPath = dirname($reflector->getFileName()) . '/Endpoint';
+    $doo->generate($app, $input, $dirPath);
 });
 
 $app->runCommand($input->getRawArgs());
+
+
+/**
+ * @param $app
+ * @return void
+ */
+function help($app): void
+{
+    $app->getPrinter()->info("-------------------");
+    $app->getPrinter()->info("DOOgether Generator");
+    $app->getPrinter()->info("-------------------");
+
+    $app->getPrinter()->success("Command:");
+    $app->getPrinter()->success("1> make:endpoint");
+    $app->getPrinter()->success(" - hint: vendor/bin/doo-tools <folder>\<folder> <flag> *root: src/Endpoint");
+    $app->getPrinter()->success(" - <folder>: escape folder with backslash <\>");
+    $app->getPrinter()->success(" - <flag>: --a <create Action class only>, --p <Parameter>, --r <Repository>, leave it blank if all");
+    $app->getPrinter()->display("  example: vendor/bin/doo-tools Fit\Booking\CreateBooking -a (leave flag blank if want to generate all");
+
+    $app->getPrinter()->error("kindly chat me <pimen@doogether.id> for more help...");
+}

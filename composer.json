@@ -4,6 +4,12 @@
   "license": "MIT",
   "homepage": "https://github.com/pimenvibritania/doo-tools",
   "keywords": ["cli","command-line", "demo"],
+  "authors": [
+    {
+      "name": "pimenvibritania",
+      "email": "pimen@doogether.id"
+    }
+  ],
   "autoload": {
     "psr-4": {
       "Dootools\\": "src/"
@@ -15,13 +21,5 @@
   },
   "bin": [
     "bin/doo-tools"
-  ],
-  "config": {
-    "bin-dir": "./"
-  },
-  "scripts": {
-    "post-install-cmd": [
-      "php -r \"copy('vendor/bin/doo-tools', './');\""
-    ]
-  }
+  ]
 }
