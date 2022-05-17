@@ -18,5 +18,10 @@
   ],
   "config": {
     "bin-dir": "./"
+  },
+  "scripts": {
+    "post-install-cmd": [
+      "php -r \"copy('vendor/bin/doo-tools', './');\""
+    ]
   }
 }
