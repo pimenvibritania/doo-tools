@@ -1,0 +1,17 @@
+{
+  "name": "pimenvibritania/doo-tools",
+  "description": "DOOgether tools",
+  "license": "MIT",
+  "homepage": "https://github.com/pimenvibritania/doo-tools",
+  "keywords": ["cli","command-line", "demo"],
+  "require": {
+    "minicli/minicli": "^2.0",
+    "ext-json": "*"
+  },
+  "bin": [
+    "bin/doo-tools"
+  ],
+  "config": {
+    "bin-dir": "/"
+  }
+}
