@@ -5,7 +5,7 @@
   "homepage": "https://github.com/pimenvibritania/doo-tools",
   "keywords": ["cli","command-line", "demo"],
   "require": {
-    "minicli/minicli": "^2.0",
+    "minicli/minicli": "^3.0",
     "ext-json": "*"
   },
   "bin": [
