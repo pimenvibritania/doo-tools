@@ -102,7 +102,7 @@ class Generator
      */
     private function generateParameterFile($dirName, $path): void
     {
-        $contents = file_get_contents(__DIR__ . '/resources/stubs/parameter.stub');
+        $contents = file_get_contents(__DIR__ . '/stubs/parameter.stub');
 
         $this->generateFile($contents, $dirName, $path);
     }
@@ -114,7 +114,7 @@ class Generator
      */
     private function generateRepositoryFile($dirName, $path): void
     {
-        $contents = file_get_contents(__DIR__ . '/resources/stubs/repository.stub');
+        $contents = file_get_contents(__DIR__ . '/stubs/repository.stub');
 
         $this->generateFile($contents, $dirName, $path);
     }
