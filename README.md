@@ -1,21 +1,8 @@
-# Demo: Advice Slip
+# Demo: DOOgether Tools (doo-tools)
 
-A demo on how to set up a Composer bin command with Minicli.
-
-Check the tutorial at https://dev.to/erikaheidi/how-to-create-a-composer-bin-command-with-minicli-35ih.
-
-## Run this as a standalone application
+## Install this on an Doogether API project
 
 ```shell
-git clone https://github.com/minicli/advice-slip.git
-cd advice-slip
-composer install
-php bin/doo-tools advice
-```
-
-## Install this on an existing project
-
-```shell
-composer require doo-tools/advice-slip
-php vendor/bin/doo-tools advice
+composer require doogetherid/doo-tools
+php vendor/bin/doo-tools help
 ```
