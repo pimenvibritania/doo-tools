@@ -4,6 +4,11 @@
   "license": "MIT",
   "homepage": "https://github.com/pimenvibritania/doo-tools",
   "keywords": ["cli","command-line", "demo"],
+  "autoload": {
+    "psr-4": {
+      "Dootools\\": "src/"
+    }
+  },
   "require": {
     "minicli/minicli": "^3.0",
     "ext-json": "*"
@@ -12,6 +17,6 @@
     "bin/doo-tools"
   ],
   "config": {
-    "bin-dir": "/"
+    "bin-dir": "./"
   }
 }

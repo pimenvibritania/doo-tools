@@ -15,13 +15,21 @@ require $root_app . '/vendor/autoload.php';
 
 use Minicli\App;
 use Minicli\Command\CommandCall;
+use Dootools\Generator;
 
 $app = new App();
 $app->setSignature('./bin/doo-tools advice');
+
+$doo = new Generator();
+
 $input = new CommandCall($argv);
 
 $app->registerCommand('help', function() use ($app) {
     $app->getPrinter()->info("./bin/doo-tools advice");
+});
+
+$app->registerCommand('make:endpoint', function() use ($app, $doo) {
+    $doo->copy(__DIR__ . "/src/Endpoint");
 });
 
 $app->registerCommand('advice', function() use ($app, $input) {
